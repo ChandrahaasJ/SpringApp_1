@@ -8,9 +8,11 @@ import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
 //import org.springframework.web.bind.annotation.RequestParam;
-
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+
+
 
 @RestController
 public class jobcontroller {
@@ -26,15 +28,19 @@ public class jobcontroller {
 
     @PostMapping("/hello")
     public String postHello(@RequestBody String jobname) {
-        return "hello"+ jobname +"!";
+        return " hello " + jobname + "!" ;
     }
 
     @PostMapping("/jobs")
-    public String postMethodName(@RequestBody Job body) {    
+    public String jobs(@RequestBody Job body) {    
         //Job s=new Job(js., 0, 0)
         return impl.CreateJob(body);
     }
     
+    @GetMapping("/jobs/{id}")
+    public List<Job> jobid(@PathVariable String id) {
+        return impl.getjobByID(id);
+    }
     
     
 }

@@ -24,4 +24,15 @@ public class JobServiceImplementation implements jobServinceInterface{
         jobs.add(job);
         return "added successfully";
     }
+
+    @Override
+    public List<Job> getjobByID(String id){
+        List<Job> occup=new ArrayList<>();
+        for(Job n:jobs){
+            if(n.getJobname().equals(id)){
+                occup.add(n);
+            }
+        }
+        return occup;
+    }
 }
